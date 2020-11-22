@@ -43,7 +43,7 @@ public class SmallTable extends Table {
                 System.out.print("Tô đặc biệt:  ");
                 break;
         }
-        for(MeatType meatType : order.meatTypes) {
+        for(MeatType meatType : order.getMeatTypes()) {
             System.out.print(meatType.getName()+"\t|");
         }
         System.out.println("");

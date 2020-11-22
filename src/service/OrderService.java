@@ -92,14 +92,10 @@ public class OrderService {
             order.addTopping(topping);
         } while (true);
 
-        System.out.println("Order thành công, số tiền : " + order.getPrice());
+//        System.out.println("Order thành công, số tiền : " + order.getPrice());
         return order;
 
 
     }
 
-    public static void main(String[] args) {
-        OrderService order = new OrderService();
-        order.newOrder();
-    }
 }
