@@ -1,9 +1,12 @@
 package entities;
 
+import service.Employee;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    private String billID;
     List<MeatType> meatTypes = new ArrayList<>();
     List<Topping> toppings = new ArrayList<>();
 

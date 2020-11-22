@@ -4,20 +4,27 @@ import entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TableService {
     public List<SmallTable> smallTables;
     public List<BigTable> bigTables;
     public List<Order> orderList;
+    public List<Employee> employees;
 
     public TableService() {
         this.smallTables = new ArrayList<>();
         this.bigTables = new ArrayList<>();
         this.orderList = new ArrayList<>();
+        this.employees = new ArrayList<>();
     }
-
-
+//Test
+    public void genarateEmp() {
+        employees.add(new Employee("113", "Tuan1"));
+        employees.add(new Employee("112", "Tun"));
+        employees.add(new Employee("111","HT"));
+    }
     public void generateTable() {
         for (int i = 0; i < 3; i++) smallTables.add(new SmallTable("STT " + i));
         for (int i = 0; i < 3; i++) bigTables.add(new BigTable("STT " + (i + 3)));
@@ -88,12 +95,24 @@ public class TableService {
             System.out.println("Bàn này đang có khách.");
         }
         table.addOrder();
+
+        table.setWaiter(employees.get(new Random().nextInt() % employees.size()));
     }
 
     public void createOrder(SmallTable table) {
         if (table.isBusy())
             System.out.println("Bàn này đang có khách.");
         table.addOrder();
+        for(Employee emp : employees) {
+            //isBusy function
+            if(true) {
+                table.setWaiter(emp);
+                break;
+            }
+        }
+
+        //table.setWaiter(employees);
+        //table.setWaiter(employees.get(new Random().nextInt() % employees.size()));
     }
 
     public void payOrderBigTable() {
@@ -110,6 +129,7 @@ public class TableService {
         int flag = 0;
         for(BigTable table : bigTables) {
             if(table.isBusy() && tableName.equals(table.getTableName())) {
+                System.out.println("Nhân viên: "+table.getCashier().getName());
                 table.printOrders();
                 for(Order xOrder : table.getOrders())
                     orderList.add(xOrder);
@@ -134,6 +154,7 @@ public class TableService {
         int flag = 0;
         for(SmallTable smtable : smallTables) {
             if(smtable.isBusy() && tableName.equals(smtable.getTableName())) {
+                System.out.println("Nhân viên: "+smtable.getWaiter().getName());
                 smtable.printOrders();
                 orderList.add(smtable.getOrder());
                 smtable.issueOrder();
@@ -145,7 +166,7 @@ public class TableService {
     public void printOrderList() {
         int i = 1;
         for(Order order : orderList) {
-            System.out.println("Thông tin hóa đơn "+(i++));
+            System.out.println("\nThông tin hóa đơn "+(i++));
             switch (order.getType()) {
                 case BIG:
                     System.out.print("Tô lớn:   ");
@@ -165,6 +186,8 @@ public class TableService {
             for(Topping toppings : order.getToppings()) {
                 System.out.print(toppings.getName()+"\t|");
             }
+            System.out.println("");
+            System.out.print("Tổng tiền: "+order.getPrice());
             System.out.println("");
         }
     }

@@ -72,4 +72,5 @@ public class BigTable extends Table {
         System.out.println("");
         System.out.println("Tổng tiền: "+ totalPrice);
     }
+
 }

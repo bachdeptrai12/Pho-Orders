@@ -11,6 +11,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         TableService tableService = new TableService();
         tableService.generateTable();
+        tableService.genarateEmp();
 
         while (true) {
             System.out.println("--------------------------");

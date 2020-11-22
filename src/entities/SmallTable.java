@@ -57,4 +57,5 @@ public class SmallTable extends Table {
 
         System.out.println("Tổng tiền: " + order.getPrice());
     }
+
 }

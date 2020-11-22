@@ -53,6 +53,7 @@ public class OrderService {
     }
 
     public static Order newOrder() {
+        Employee staff;
         Order order = new Order();
         System.out.println("Chọn loại tô");
         System.out.println("|1. Nhỏ\t|2. To\t|3. Đặc biêt|");
