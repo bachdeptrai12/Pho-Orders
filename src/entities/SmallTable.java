@@ -31,26 +31,26 @@ public class SmallTable extends Table {
 
     @Override
     public void printOrders() {
-        System.out.println("Thông tin gọi món:  ");
+        System.out.println("Thông tin gọi món " + getBillID());
         switch (order.getType()) {
             case BIG:
-                System.out.print("Tô lớn:   ");
+                System.out.print("Tô lớn - 45000\n");
                 break;
             case SMALL:
-                System.out.print("Tô nhỏ:   ");
+                System.out.print("Tô nhỏ - 60000\n");
                 break;
             case SPECIAL:
-                System.out.print("Tô đặc biệt:  ");
+                System.out.print("Tô đặc biệt - 75000\n");
                 break;
         }
         for(MeatType meatType : order.getMeatTypes()) {
-            System.out.print(meatType.getName()+"\t|");
+            System.out.print(meatType.getName()+" | ");
         }
         System.out.println("");
         if(order.isTopping()) {
-            System.out.print("Toppings: ");
+            System.out.print("Toppings\n");
             for (Topping topping : order.toppings) {
-                System.out.print(topping.getName() + "\t|");
+                System.out.print(topping.getName() + " - " + topping.getPrice() + "\n");
             }
             System.out.println("");
         }

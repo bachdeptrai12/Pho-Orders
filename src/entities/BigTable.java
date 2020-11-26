@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class BigTable extends Table {
 
-    List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     public BigTable(String name) {
         super("Bàn lớn: " + name);
@@ -26,7 +26,7 @@ public class BigTable extends Table {
     @Override
     public void addOrder() {
         System.out.println("Order " + this.getTableName());
-        System.out.println("Số lượng người đặt");
+        System.out.print("Số lượng người đặt ");
         Scanner sc = new Scanner(System.in);
         int total = sc.nextInt();
         for (int i = 0; i < total; i++) {
@@ -42,27 +42,27 @@ public class BigTable extends Table {
     @Override
     public void printOrders() {
         int totalPrice = 0;
-        System.out.println("Thông tin hóa đơn");
+        System.out.println("Thông tin hóa đơn " + getBillID());
         for(Order xOrders : orders) {
             switch (xOrders.getType()) {
                 case BIG:
-                    System.out.print("Tô lớn: ");
+                    System.out.print("Tô lớn - 45000\n");
                     break;
                 case SMALL:
-                    System.out.print("Tô nhỏ: ");
+                    System.out.print("Tô nhỏ - 60000\n");
                     break;
                 case SPECIAL:
-                    System.out.print("Tô đặc biệt: ");
+                    System.out.print("Tô đặc biệt - 75000\n");
                     break;
             }
             for(MeatType meatType : xOrders.meatTypes) {
-                System.out.print(meatType.getName()+"\t|");
+                System.out.print(meatType.getName()+" |");
             }
             System.out.println("");
             if(xOrders.isTopping()) {
-                System.out.print("Toppings: ");
+                System.out.print("Toppings\n");
                 for (Topping topping : xOrders.toppings) {
-                    System.out.print(topping.getName() + "\t|");
+                    System.out.print(topping.getName() + " | " + topping.getPrice() + "\n");
                 }
                 System.out.println("");
             }

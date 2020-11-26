@@ -1,7 +1,7 @@
 package entities;
 
 public class MeatType {
-    String name;
+    private String name;
 
     public MeatType(String name) {
         this.name = name;

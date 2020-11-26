@@ -1,14 +1,8 @@
 package entities;
 
-import service.Employee;
-
-import java.util.Date;
-import java.util.List;
-
 public abstract class Table implements iTable {
-    String tableName;
-    Employee cashier;
-    Employee waiter;
+    private String billID;
+    private String tableName;
 
     public Table(String tableName) {
         this.tableName = tableName;
@@ -18,19 +12,11 @@ public abstract class Table implements iTable {
         return tableName;
     }
 
-    public Employee getCashier() {
-        return cashier;
+    public void setBillID(String billID) {
+        this.billID = billID;
     }
 
-    public void setCashier(Employee cashier) {
-        this.cashier = cashier;
-    }
-
-    public Employee getWaiter() {
-        return waiter;
-    }
-
-    public void setWaiter(Employee waiter) {
-        this.waiter = waiter;
+    public String getBillID() {
+        return billID;
     }
 }

@@ -32,6 +32,7 @@ public class OrderService {
                     return null;
         }
     }
+
     public static MeatType chooseMeatType() {
         System.out.println("Chọn món thịt: ");
         System.out.println("|1. Tái\t|2. Nạm\t|3. Gầu\t|4. Gân\t|5. Bò Vò Viên\t|0. Tiếp tục|");
@@ -53,7 +54,6 @@ public class OrderService {
     }
 
     public static Order newOrder() {
-        Employee staff;
         Order order = new Order();
         System.out.println("Chọn loại tô");
         System.out.println("|1. Nhỏ\t|2. To\t|3. Đặc biêt|");
@@ -72,7 +72,7 @@ public class OrderService {
 
         int maximumMeatType = choice + 1;
 
-        System.out.println("Chọn số lượng món thịt");
+        System.out.print("Chọn số lượng món thịt: ");
         int quantity;
         do {
             quantity = sc.nextInt();
@@ -93,7 +93,6 @@ public class OrderService {
             order.addTopping(topping);
         } while (true);
 
-//        System.out.println("Order thành công, số tiền : " + order.getPrice());
         return order;
 
 

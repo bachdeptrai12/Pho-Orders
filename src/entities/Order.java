@@ -1,7 +1,5 @@
 package entities;
 
-import service.Employee;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +11,22 @@ public class Order {
     DishType type;
     public Order() {}
 
-    public DishType getType() {
-        return type;
-    }
-
-    public void setType(DishType type) {
-        this.type = type;
-    }
-
     public enum DishType {
         SMALL, BIG, SPECIAL
     }
 
+    public String getBillID() {
+        return billID;
+    }
+    public void setBillID(String billID) {
+        this.billID = billID;
+    }
+    public DishType getType() {
+        return type;
+    }
+    public void setType(DishType type) {
+        this.type = type;
+    }
     public void addMeat(MeatType xMeatType) {
         meatTypes.add(xMeatType);
     }
@@ -37,14 +39,13 @@ public class Order {
     public List<Topping> getToppings() {
         return toppings;
     }
-
     public void addTopping(Topping topping) {
         this.toppings.add(topping);
     }
-
     public boolean isTopping() {
         return !toppings.isEmpty();
     }
+
     public double getPrice() {
         double price = 0;
         switch (this.type) {

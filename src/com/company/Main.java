@@ -2,17 +2,18 @@ package com.company;
 
 import service.TableService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
         Scanner sc = new Scanner(System.in);
         TableService tableService = new TableService();
         tableService.generateTable();
-        tableService.genarateEmp();
 
+        A:
         while (true) {
             System.out.println("--------------------------");
             System.out.println("1. Thống kê trạng thái bàn.");
@@ -21,23 +22,31 @@ public class Main {
             System.out.println("4. Hiển thị toàn bộ hóa đơn trong ngày.");
             System.out.println("0. Thoát");
             System.out.print("          Lựa chọn (0 - 3): ");
-            int menuChoice;
-            menuChoice = sc.nextInt();
-            sc.nextLine();
+            int menuChoice = 0;
+
+            try {
+                menuChoice = Integer.parseInt(sc.nextLine());
+            } catch (Exception e) {
+                System.out.println("Lựa chọn không hợp lệ.");
+                continue A;
+            }
             if (menuChoice == 0) break;
             switch (menuChoice) {
                 case 1:
                     tableService.getCurrentStatistic();
                     break;
                 case 2:
-                    int choice3;
+                    int choice3 = 0;
                     System.out.println("---------------");
                     System.out.println("1. Khảch đi 1 mình.");
-                    System.out.println("2. Khách đi theo nhóm");
+                    System.out.println("2. Khách đi theo nhóm.");
                     System.out.println("0. Thoát.");
                     System.out.print("          Lựa chọn (0 - 2): ");
-                    choice3 = sc.nextInt();
-                    sc.nextLine();
+                    try {
+                        choice3 = Integer.parseInt(sc.nextLine());
+                    } catch (Exception e) {
+                         System.out.println("Lựa chọn không hợp lệ.");
+                    }
                     if (choice3 == 0) break;
                     switch (choice3) {
                         case 1:
@@ -70,15 +79,18 @@ public class Main {
                     }
                     break;
                 case 3:
-                    int choice2;
-                    while(true) {
+                    int choice2 = 0;
+                    while (true) {
                         System.out.println("-----------------------");
                         System.out.println("1. Thanh toán bàn nhỏ.");
                         System.out.println("2. Thanh toán bàn lớn.");
                         System.out.println("0. Thoát.");
                         System.out.print("        Lựa chọn (0 - 2): ");
-                        choice2 = sc.nextInt();
-                        sc.nextLine();
+                        try {
+                            choice2 = Integer.parseInt(sc.nextLine());
+                        } catch (Exception e) {
+                            System.out.println("Lựa chọn không hợp lệ.");
+                        }
                         if (choice2 == 0) break;
                         switch (choice2) {
                             case 1:
@@ -102,4 +114,5 @@ public class Main {
             }
         }
     }
+
 }
