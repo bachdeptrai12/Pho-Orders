@@ -46,10 +46,10 @@ public class BigTable extends Table {
         for(Order xOrders : orders) {
             switch (xOrders.getType()) {
                 case BIG:
-                    System.out.print("Tô lớn - 45000\n");
+                    System.out.print("Tô lớn - 60000\n");
                     break;
                 case SMALL:
-                    System.out.print("Tô nhỏ - 60000\n");
+                    System.out.print("Tô nhỏ - 45000\n");
                     break;
                 case SPECIAL:
                     System.out.print("Tô đặc biệt - 75000\n");
